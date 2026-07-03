@@ -90,16 +90,6 @@
   .cursor-blink{display:inline-block; width:7px; height:16px; background:var(--coral); vertical-align:middle; animation:blink 1s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
 
-  .float-chip{
-    position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:12px;
-    padding:.5rem .8rem; font-family:'IBM Plex Mono',monospace; font-size:.7rem;
-    box-shadow:0 12px 30px rgba(23,27,46,.1); display:flex; align-items:center; gap:.5rem;
-    animation:floaty 5s ease-in-out infinite; z-index:2;
-  }
-  .chip-1{top:4%; right:-4%;} .chip-2{bottom:8%; left:-6%; animation-delay:1.3s;}
-  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-  @media(max-width:991px){.float-chip{display:none;}}
-
   /* ---- about ---- */
   .about-card{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:1.8rem; height:100%;}
   .about-card i{color:var(--coral); font-size:1.25rem; margin-bottom:.8rem;}
@@ -189,7 +179,7 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
   <div class="container">
     <a class="navbar-brand d-flex align-items-center gap-2" href="#accueil">
       <span class="brand-mark">NS</span>
-      <span class="d-none d-sm-inline mono" style="font-size:.85rem;color:var(--ink-dim);">ndiaye.dev</span>
+      <span class="d-none d-sm-inline mono" style="font-size:.85rem;color:var(--ink-dim);">ndiaye Seydou</span>
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <i class="fa-solid fa-bars"></i>
@@ -214,7 +204,7 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
   <div class="container">
     <div class="row align-items-center gy-5">
       <div class="col-lg-6">
-        <div class="hero-kicker">// dakar, sénégal — disponible pour de nouveaux projets</div>
+        <div class="hero-kicker">// Bamako, Mali — disponible pour de nouveaux projets</div>
         <h1>Ndiaye SEYDOU<br><span class="hero-role">Ingénieur Mobile</span></h1>
         <p class="lead-text">J'écris du code mobile propre et maintenable — des applications Android, iOS et cross-platform pensées pour tenir la charge en production, pas seulement pour la démo.</p>
         <div class="d-flex flex-wrap gap-3">
@@ -230,15 +220,12 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
 
       <div class="col-lg-6">
         <div class="editor-wrap position-relative">
-          <div class="float-chip chip-1"><i class="fa-brands fa-swift" style="color:var(--coral)"></i> Swift · Kotlin</div>
-          <div class="float-chip chip-2"><i class="fa-solid fa-code-branch" style="color:var(--teal)"></i> Git Flow</div>
-
           <div class="editor">
             <div class="editor-topbar">
               <span class="editor-dot" style="background:#FF5F57;"></span>
               <span class="editor-dot" style="background:#FEBC2E;"></span>
               <span class="editor-dot" style="background:#28C840;"></span>
-              <span class="mono ms-2" style="font-size:.7rem;color:#8890B0;">fanta-diop — profile.dart</span>
+              <span class="mono ms-2" style="font-size:.7rem;color:#8890B0;">Ndiaye-Seydou — profile.dart</span>
             </div>
             <div class="editor-tabs">
               <div class="editor-tab active">profile.dart</div>
@@ -339,19 +326,18 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
       </div>
       <div class="col-6 col-md-3">
         <div class="bento big"><i class="fa-brands fa-git-alt"></i><div class="name">Git & CI/CD</div><div class="lvl">Avancé</div></div>
-
-         <div class="col-6 col-md-3">
-        <div class="bento big"><i class="fa-solid fa-cloud"></i><div class="name">Cloud Computing</div><div class="lvl">Avancé</div></div>
       </div>
-
       <div class="col-6 col-md-3">
-        <div class="bento big"><i class="fa-solid fa-cubes"></i><div class="name">Docker</div><div class="lvl">Avancé</div></div>
+        <div class="bento"><i class="fa-solid fa-cloud"></i><div class="name">Cloud Computing</div><div class="lvl">Intermédiaire</div></div>
       </div>
-
       <div class="col-6 col-md-3">
-        <div class="bento big"><i class="fa-solid fa-dharmachakra"></i><div class="name">Kubernetes</div><div class="lvl">Avancé</div></div>
+        <div class="bento"><i class="fa-brands fa-docker"></i><div class="name">Docker</div><div class="lvl">Intermédiaire</div></div>
       </div>
-      
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-solid fa-dharmachakra"></i><div class="name">Kubernetes</div><div class="lvl">Intermédiaire</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-solid fa-server"></i><div class="name">Render</div><div class="lvl">Intermédiaire</div></div>
       </div>
     </div>
   </div>
@@ -425,12 +411,13 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
     <div class="eyebrow">parcours</div>
     <h2 class="section-title">Historique</h2>
 
-    <div class="gitlog mt-4">
+    <h3 class="h5 mb-3 mt-4" style="font-family:'Plus Jakarta Sans',sans-serif;">Expérience professionnelle</h3>
+    <div class="gitlog">
       <div class="gitlog-item">
         <span class="gitlog-hash">#2024.03</span>
         <div>
           <div class="gitlog-role">Ingénieur Développement Mobile Senior</div>
-          <div class="gitlog-org">Entreprise Tech · Dakar, Sénégal</div>
+          <div class="gitlog-org">NEODEV · Bamako, Mali</div>
           <div class="gitlog-desc">Pilotage technique d'applications Swift & Kotlin, mentorat, mise en place des standards de revue de code.</div>
         </div>
         <span class="gitlog-date">2024 — présent</span>
@@ -439,7 +426,7 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
         <span class="gitlog-hash">#2022.01</span>
         <div>
           <div class="gitlog-role">Développeur Mobile</div>
-          <div class="gitlog-org">Studio Numérique · Dakar, Sénégal</div>
+          <div class="gitlog-org">Studio Numérique · Bamako, Malil</div>
           <div class="gitlog-desc">Développement Flutter multi-clients, intégration de paiements mobiles et d'API tierces.</div>
         </div>
         <span class="gitlog-date">2022 — 2024</span>
@@ -453,14 +440,45 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
         </div>
         <span class="gitlog-date">2020 — 2022</span>
       </div>
+    </div>
+
+    <h3 class="h5 mb-3 mt-5" style="font-family:'Plus Jakarta Sans',sans-serif;">Formation académique</h3>
+    <div class="gitlog">
       <div class="gitlog-item">
-        <span class="gitlog-hash">#2015.09</span>
+        <span class="gitlog-hash">#2025.01</span>
+        <div>
+          <div class="gitlog-role">Licence en Programmation et Développement Web et Mobile</div>
+          <div class="gitlog-org">École / Université</div>
+          <div class="gitlog-desc">Spécialisation développement d'applications web et mobiles.</div>
+        </div>
+        <span class="gitlog-date">2025</span>
+      </div>
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2024.09</span>
+        <div>
+          <div class="gitlog-role">DUT en Informatique de Gestion</div>
+          <div class="gitlog-org">École / Université</div>
+          <div class="gitlog-desc">Formation aux fondamentaux de l'informatique appliquée à la gestion.</div>
+        </div>
+        <span class="gitlog-date">2024</span>
+      </div>
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2024.06</span>
+        <div>
+          <div class="gitlog-role">Attestation en Génie Logiciel</div>
+          <div class="gitlog-org">École / Université</div>
+          <div class="gitlog-desc">Formation aux méthodes et bonnes pratiques du développement logiciel.</div>
+        </div>
+        <span class="gitlog-date">2024</span>
+      </div>
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2023.09</span>
         <div>
           <div class="gitlog-role">Diplôme d'Ingénieur en Informatique</div>
           <div class="gitlog-org">École / Université</div>
           <div class="gitlog-desc">Spécialisation développement logiciel et systèmes mobiles.</div>
         </div>
-        <span class="gitlog-date">2015 — 2020</span>
+        <span class="gitlog-date">2019 — 2020</span>
       </div>
     </div>
   </div>
@@ -487,9 +505,9 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
           <div><div class="mono" style="font-size:.72rem;color:var(--ink-dim);">LOCALISATION</div><div>Dakar, Sénégal</div></div>
         </div>
         <div class="d-flex gap-2 mt-4">
-          <a href="#" class="social-dot" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="social-dot" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" class="social-dot" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://github.com/NdiayeSeydou" class="social-dot" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/seydou-ndiaye-7270892a5/" class="social-dot" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://x.com/NdiayeSeydou12" class="social-dot" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
       </div>
 
@@ -531,7 +549,7 @@ h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !import
 <footer>
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
     <div>© <span id="year"></span> Ndiaye SEYDOU — Tous droits réservés.</div>
-    <div class="mono" style="font-size:.75rem;">construit avec <i class="fa-solid fa-heart" style="color:var(--coral);"></i> à Dakar</div>
+    <div class="mono" style="font-size:.75rem;"> Bamako, Mali</div>
   </div>
 </footer>
 
