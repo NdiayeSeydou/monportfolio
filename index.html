@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ndiaye SEYDOU — Ingénieur Programmation & Développement Mobile</title>
+<meta name="description" content="Portfolio de Ndiaye SEYDOU, ingénieure en programmation et développement mobile.">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#F7F4EF;
+    --surface:#FFFFFF;
+    --ink:#1E2430;
+    --ink-dim:#5B5F76;
+    --coral:#2563EB;
+    --teal:#F59E0B;
+    --lavender:#EC4899;
+    --line:#E4E5EE;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; overflow-x:hidden;}
+  ::selection{background:var(--coral); color:#fff;}
+  a{text-decoration:none; color:inherit;}
+  h1,h2,h3,h4,.display-font{font-family:'Plus Jakarta Sans',sans-serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  .section{padding:6.5rem 0;}
+  @media(max-width:768px){.section{padding:4rem 0;}}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--coral); display:flex; align-items:center; gap:.6rem; margin-bottom:1rem;
+  }
+  .eyebrow::before{content:"";width:24px;height:2px;background:var(--coral);}
+  .section-title{font-size:clamp(1.8rem,3.2vw,2.6rem); font-weight:800; margin-bottom:1.1rem;}
+  .lead-dim{color:var(--ink-dim);}
+
+  .btn-coral{background:var(--ink); color:#fff; font-weight:600; border:none; padding:.8rem 1.7rem; border-radius:12px; transition:.25s ease;}
+  .btn-coral:hover{background:var(--coral); color:#fff; transform:translateY(-2px);}
+  .btn-ghost{border:1.5px solid var(--ink); color:var(--ink); padding:.75rem 1.6rem; border-radius:12px; transition:.25s ease;}
+  .btn-ghost:hover{background:var(--ink); color:#fff;}
+
+  /* ---- navbar ---- */
+  .navbar-custom{background:rgba(245,246,250,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); padding:.9rem 0; z-index:1000;}
+  .brand-mark{width:38px;height:38px;border-radius:10px; background:var(--ink); color:var(--coral); display:flex;align-items:center;justify-content:center; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:.95rem;}
+  .nav-link-custom{font-size:.9rem; color:var(--ink-dim)!important; margin:0 .6rem; position:relative;}
+  .nav-link-custom.active,.nav-link-custom:hover{color:var(--ink)!important;}
+  .nav-link-custom.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--coral);}
+
+  /* ---- hero ---- */
+  .hero{min-height:100vh; display:flex; align-items:center; padding-top:6rem; position:relative;}
+  .blob{position:absolute; border-radius:50%; filter:blur(60px); opacity:.35; z-index:0;}
+  .blob-1{width:420px;height:420px; background:var(--teal); top:-80px; right:-120px;}
+  .blob-2{width:320px;height:320px; background:var(--lavender); bottom:-60px; left:-100px;}
+  .hero .container{position:relative; z-index:1;}
+
+  .hero-kicker{font-family:'IBM Plex Mono',monospace; color:var(--teal); font-size:.85rem;}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.9rem); font-weight:800; line-height:1.07; margin:.6rem 0 1.2rem;}
+  .hero-role{color:var(--coral);}
+  .hero p.lead-text{color:var(--ink-dim); font-size:1.1rem; max-width:520px; margin-bottom:2rem;}
+
+  .stat-row{display:flex; gap:2.2rem; margin-top:2.8rem; flex-wrap:wrap;}
+  .stat-num{font-family:'Plus Jakarta Sans',sans-serif; font-size:1.85rem; font-weight:800;}
+  .stat-label{font-size:.78rem; color:var(--ink-dim); font-family:'IBM Plex Mono',monospace;}
+
+  /* ---- CODE EDITOR (signature) ---- */
+  .editor-wrap{display:flex; justify-content:center;}
+  .editor{
+    width:100%; max-width:480px; background:#171B2E; border-radius:18px; overflow:hidden;
+    box-shadow:0 40px 80px -20px rgba(23,27,46,.35), 0 0 0 1px rgba(23,27,46,.06);
+  }
+  .editor-topbar{display:flex; align-items:center; gap:.4rem; padding:.8rem 1rem; background:#20253D; border-bottom:1px solid rgba(255,255,255,.06);}
+  .editor-dot{width:11px;height:11px;border-radius:50%;}
+  .editor-tabs{display:flex; gap:.3rem; padding:0 .5rem; background:#1B2038;}
+  .editor-tab{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#8890B0;
+    padding:.6rem .9rem; border-right:1px solid rgba(255,255,255,.05); cursor:default;
+  }
+  .editor-tab.active{color:#F5F6FA; background:#171B2E; border-top:2px solid var(--coral);}
+  .editor-body{padding:1.2rem 1.3rem 1.5rem; font-family:'IBM Plex Mono',monospace; font-size:.78rem; line-height:1.9; min-height:280px;}
+  .ln{color:#4B5170; display:inline-block; width:22px; user-select:none;}
+  .code-line{white-space:pre;}
+  .c-key{color:#FF7A85;} .c-str{color:#7CE7CD;} .c-fn{color:#8FB3FF;} .c-com{color:#5B617F;} .c-var{color:#F5F6FA;} .c-num{color:#F0C674;}
+  .cursor-blink{display:inline-block; width:7px; height:16px; background:var(--coral); vertical-align:middle; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .float-chip{
+    position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:.5rem .8rem; font-family:'IBM Plex Mono',monospace; font-size:.7rem;
+    box-shadow:0 12px 30px rgba(23,27,46,.1); display:flex; align-items:center; gap:.5rem;
+    animation:floaty 5s ease-in-out infinite; z-index:2;
+  }
+  .chip-1{top:4%; right:-4%;} .chip-2{bottom:8%; left:-6%; animation-delay:1.3s;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  @media(max-width:991px){.float-chip{display:none;}}
+
+  /* ---- about ---- */
+  .about-card{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:1.8rem; height:100%;}
+  .about-card i{color:var(--coral); font-size:1.25rem; margin-bottom:.8rem;}
+
+  /* ---- skills bento ---- */
+  .bento{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:1.3rem; height:100%; transition:.25s ease;}
+  .bento:hover{border-color:var(--teal); transform:translateY(-4px);}
+  .bento i{font-size:1.5rem; color:var(--teal); margin-bottom:.6rem;}
+  .bento .name{font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.9rem;}
+  .bento .lvl{font-family:'IBM Plex Mono',monospace; font-size:.65rem; color:var(--ink-dim); margin-top:.15rem;}
+  .bento.big{background:var(--ink); color:#fff;}
+  .bento.big .lvl{color:#B9BDD6;}
+  .bento.big i{color:var(--coral);}
+
+  /* ---- projects (commit style) ---- */
+  .filter-btn{background:transparent; border:1px solid var(--line); color:var(--ink-dim); border-radius:100px; padding:.5rem 1.1rem; font-size:.85rem; margin:.2rem; transition:.2s ease;}
+  .filter-btn.active,.filter-btn:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  .commit-card{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:1.5rem; height:100%; transition:.25s ease;}
+  .commit-card:hover{border-color:var(--coral); transform:translateY(-4px);}
+  .commit-head{display:flex; align-items:center; gap:.6rem; margin-bottom:.9rem;}
+  .commit-hash{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--teal); background:rgba(14,165,165,.08); padding:.2rem .5rem; border-radius:6px;}
+  .commit-branch{font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:var(--ink-dim);}
+  .commit-title{font-weight:700; font-size:1.02rem; margin-bottom:.5rem;}
+  .commit-desc{color:var(--ink-dim); font-size:.87rem; margin-bottom:1rem;}
+  .stack-pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.65rem; border:1px solid var(--line); border-radius:100px; padding:.2rem .6rem; margin:.15rem .2rem 0 0; color:var(--ink-dim);}
+
+  /* ---- experience: git log style ---- */
+  .gitlog{background:var(--ink); border-radius:20px; padding:2.2rem; color:#fff;}
+  .gitlog-item{display:flex; gap:1rem; padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,.08);}
+  .gitlog-item:last-child{border-bottom:none;}
+  .gitlog-hash{font-family:'IBM Plex Mono',monospace; color:var(--coral); font-size:.8rem; flex-shrink:0; width:78px;}
+  .gitlog-role{font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.98rem;}
+  .gitlog-org{color:#9AA0C0; font-size:.82rem; margin-bottom:.3rem;}
+  .gitlog-desc{color:#C6C9DE; font-size:.86rem;}
+  .gitlog-date{font-family:'IBM Plex Mono',monospace; color:#7C81A0; font-size:.72rem; margin-left:auto; white-space:nowrap; padding-left:1rem;}
+
+  /* ---- contact ---- */
+  .contact-card{background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:2.4rem;}
+  .form-control-custom{background:#F7F8FC!important; border:1px solid var(--line)!important; color:var(--ink)!important; border-radius:10px!important; padding:.8rem 1rem!important;}
+  .form-control-custom:focus{border-color:var(--coral)!important; box-shadow:0 0 0 3px rgba(255,90,95,.13)!important;}
+  .form-label-custom{font-size:.78rem; color:var(--ink-dim); font-family:'IBM Plex Mono',monospace; margin-bottom:.4rem;}
+  .contact-info-item{display:flex; gap:1rem; align-items:flex-start; margin-bottom:1.5rem;}
+  .contact-info-item i{width:42px;height:42px;border-radius:11px; background:var(--surface); border:1px solid var(--line); display:flex;align-items:center;justify-content:center; color:var(--coral); flex-shrink:0;}
+  .social-dot{width:44px;height:44px;border-radius:50%; border:1px solid var(--line); display:flex;align-items:center;justify-content:center; transition:.2s ease;}
+  .social-dot:hover{border-color:var(--coral); color:var(--coral); transform:translateY(-3px);}
+
+  footer{border-top:1px solid var(--line); padding:2rem 0; color:var(--ink-dim); font-size:.85rem;}
+
+  @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important;}}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+
+  .toast-custom{
+    position:fixed; bottom:24px; right:24px; z-index:2000; background:var(--ink); color:#fff;
+    padding:1rem 1.3rem; border-radius:14px; display:flex; gap:.7rem; align-items:center;
+    transform:translateY(140%); transition:transform .4s ease; font-size:.9rem;
+  }
+  .toast-custom.show{transform:translateY(0);}
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+body{
+  background:#EEF3F9 !important;
+  background-image:
+    linear-gradient(rgba(37,99,235,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.10) 1px, transparent 1px) !important;
+  background-size:28px 28px !important;
+}
+h1,h2,h3,h4,.display-font{font-family:'Big Shoulders Display',sans-serif !important; text-transform:uppercase; letter-spacing:.01em;}
+.blob{display:none !important;}
+.about-card,.bento,.commit-card,.contact-card{
+  border-radius:4px !important; border:1.5px dashed rgba(37,99,235,.4) !important; background:#fff !important;
+}
+.editor{border-radius:4px !important; border:2px solid #1E2430 !important;}
+.btn-coral{border-radius:4px !important;}
+.btn-ghost{border-radius:4px !important;}
+.filter-btn{border-radius:4px !important;}
+.section-title::after{content:" ///"; color:#2563EB;}
+
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#accueil">
+      <span class="brand-mark">NS</span>
+      <span class="d-none d-sm-inline mono" style="font-size:.85rem;color:var(--ink-dim);">ndiaye.dev</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#accueil">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#apropos">À propos</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#competences">Compétences</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#projets">Projets</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience">Parcours</a></li>
+        <li class="nav-item ms-lg-2"><a href="#contact" class="btn btn-coral btn-sm">Me contacter</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="accueil">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="hero-kicker">// dakar, sénégal — disponible pour de nouveaux projets</div>
+        <h1>Ndiaye SEYDOU<br><span class="hero-role">Ingénieur Mobile</span></h1>
+        <p class="lead-text">J'écris du code mobile propre et maintenable — des applications Android, iOS et cross-platform pensées pour tenir la charge en production, pas seulement pour la démo.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#projets" class="btn btn-coral">Voir mes projets</a>
+          <a href="#contact" class="btn btn-ghost">Discutons d'un projet</a>
+        </div>
+        <div class="stat-row">
+          <div><div class="stat-num" data-count="5">0</div><div class="stat-label">ANS D'EXPÉRIENCE</div></div>
+          <div><div class="stat-num" data-count="25">0</div><div class="stat-label">APPS LIVRÉES</div></div>
+          <div><div class="stat-num" data-count="12">0</div><div class="stat-label">CLIENTS ACCOMPAGNÉS</div></div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="editor-wrap position-relative">
+          <div class="float-chip chip-1"><i class="fa-brands fa-swift" style="color:var(--coral)"></i> Swift · Kotlin</div>
+          <div class="float-chip chip-2"><i class="fa-solid fa-code-branch" style="color:var(--teal)"></i> Git Flow</div>
+
+          <div class="editor">
+            <div class="editor-topbar">
+              <span class="editor-dot" style="background:#FF5F57;"></span>
+              <span class="editor-dot" style="background:#FEBC2E;"></span>
+              <span class="editor-dot" style="background:#28C840;"></span>
+              <span class="mono ms-2" style="font-size:.7rem;color:#8890B0;">fanta-diop — profile.dart</span>
+            </div>
+            <div class="editor-tabs">
+              <div class="editor-tab active">profile.dart</div>
+              <div class="editor-tab d-none d-sm-block">skills.json</div>
+              <div class="editor-tab d-none d-md-block">contact.ts</div>
+            </div>
+            <div class="editor-body">
+              <div class="code-line"><span class="ln">1</span><span class="c-key">class</span> <span class="c-fn">Engineer</span> {</div>
+              <div class="code-line"><span class="ln">2</span>&nbsp;&nbsp;<span class="c-var">name</span> = <span class="c-str">'Ndiaye Seydou'</span>;</div>
+              <div class="code-line"><span class="ln">3</span>&nbsp;&nbsp;<span class="c-var">role</span> = <span class="c-str">'Ingénieur Mobile'</span>;</div>
+              <div class="code-line"><span class="ln">4</span>&nbsp;&nbsp;<span class="c-var">based</span> = <span class="c-str">'Dakar, SN'</span>;</div>
+              <div class="code-line"><span class="ln">5</span>&nbsp;&nbsp;<span class="c-var">stack</span> = [<span class="c-str">'Swift'</span>, <span class="c-str">'Kotlin'</span>,</div>
+              <div class="code-line"><span class="ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">'Flutter'</span>];</div>
+              <div class="code-line"><span class="ln">7</span></div>
+              <div class="code-line"><span class="ln">8</span>&nbsp;&nbsp;<span class="c-com">// toujours partante pour un nouveau défi</span></div>
+              <div class="code-line"><span class="ln">9</span>&nbsp;&nbsp;<span class="c-fn">available</span>() => <span class="c-key">true</span>;<span class="cursor-blink"></span></div>
+              <div class="code-line"><span class="ln">10</span>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= A PROPOS ================= -->
+<section class="section" id="apropos">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="eyebrow">à propos</div>
+        <h2 class="section-title">Du code qui tient debout une fois en production.</h2>
+        <p class="lead-dim">Ingénieur en programmation et développement mobile, j'interviens sur l'architecture, le développement natif et cross-platform, l'intégration d'API et la mise en ligne sur les stores.</p>
+        <p class="lead-dim">Ce qui m'intéresse le plus : transformer un cahier des charges flou en une application stable, testée, et agréable à faire évoluer par la suite.</p>
+      </div>
+      <div class="col-lg-7">
+        <div class="row g-3 mt-4 mt-lg-0">
+          <div class="col-sm-6">
+            <div class="about-card">
+              <i class="fa-solid fa-diagram-project"></i>
+              <h4 class="h6 mb-2">Architecture propre</h4>
+              <p class="small mb-0 lead-dim">Code modulaire, testable, pensé pour durer au-delà de la V1.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-card">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <h4 class="h6 mb-2">Multiplateforme</h4>
+              <p class="small mb-0 lead-dim">Natif quand la performance compte, cross-platform quand la vitesse compte.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-card">
+              <i class="fa-solid fa-vial"></i>
+              <h4 class="h6 mb-2">Tests & qualité</h4>
+              <p class="small mb-0 lead-dim">Tests unitaires et d'intégration intégrés au flux de développement.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-card">
+              <i class="fa-solid fa-people-group"></i>
+              <h4 class="h6 mb-2">Collaboration</h4>
+              <p class="small mb-0 lead-dim">Revues de code, pair programming, communication claire avec le produit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPETENCES (bento) ================= -->
+<section class="section" id="competences" style="background:#EFF1F8;">
+  <div class="container">
+    <div class="eyebrow">compétences</div>
+    <h2 class="section-title">Stack technique</h2>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <div class="bento big"><i class="fa-brands fa-swift"></i><div class="name">Swift</div><div class="lvl">Avancé</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-brands fa-android"></i><div class="name">Kotlin</div><div class="lvl">Avancé</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-solid fa-mobile-screen"></i><div class="name">Flutter / Dart</div><div class="lvl">Avancé</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-brands fa-react"></i><div class="name">React Native</div><div class="lvl">Intermédiaire</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-solid fa-plug"></i><div class="name">API REST / GraphQL</div><div class="lvl">Avancé</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-solid fa-fire"></i><div class="name">Firebase</div><div class="lvl">Avancé</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento"><i class="fa-solid fa-database"></i><div class="name">SQL / NoSQL</div><div class="lvl">Intermédiaire</div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="bento big"><i class="fa-brands fa-git-alt"></i><div class="name">Git & CI/CD</div><div class="lvl">Avancé</div></div>
+
+         <div class="col-6 col-md-3">
+        <div class="bento big"><i class="fa-solid fa-cloud"></i><div class="name">Cloud Computing</div><div class="lvl">Avancé</div></div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="bento big"><i class="fa-solid fa-cubes"></i><div class="name">Docker</div><div class="lvl">Avancé</div></div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="bento big"><i class="fa-solid fa-dharmachakra"></i><div class="name">Kubernetes</div><div class="lvl">Avancé</div></div>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJETS ================= -->
+<section class="section" id="projets">
+  <div class="container">
+    <div class="eyebrow">projets</div>
+    <h2 class="section-title">Derniers commits</h2>
+
+    <div class="mb-4">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="swift">Swift</button>
+      <button class="filter-btn" data-filter="kotlin">Kotlin</button>
+      <button class="filter-btn" data-filter="flutter">Flutter</button>
+    </div>
+
+    <div class="row g-4" id="projectGrid">
+      <div class="col-md-6 col-lg-3 project-item" data-cat="swift">
+        <div class="commit-card">
+          <div class="commit-head">
+            <span class="commit-hash">#a3f9c1</span>
+            <span class="commit-branch">main</span>
+          </div>
+          <div class="commit-title">App de covoiturage urbain</div>
+          <p class="commit-desc">Mise en relation conducteurs/passagers avec suivi GPS en temps réel.</p>
+          <span class="stack-pill">Swift</span><span class="stack-pill">MapKit</span><span class="stack-pill">Firebase</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 project-item" data-cat="kotlin">
+        <div class="commit-card">
+          <div class="commit-head">
+            <span class="commit-hash">#7d21e8</span>
+            <span class="commit-branch">main</span>
+          </div>
+          <div class="commit-title">Gestion de stock PME</div>
+          <p class="commit-desc">Suivi d'inventaire hors-ligne avec synchronisation automatique.</p>
+          <span class="stack-pill">Kotlin</span><span class="stack-pill">Room</span><span class="stack-pill">WorkManager</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 project-item" data-cat="flutter">
+        <div class="commit-card">
+          <div class="commit-head">
+            <span class="commit-hash">#c48b02</span>
+            <span class="commit-branch">main</span>
+          </div>
+          <div class="commit-title">App d'apprentissage des langues</div>
+          <p class="commit-desc">Leçons interactives et suivi de progression pour trois langues locales.</p>
+          <span class="stack-pill">Flutter</span><span class="stack-pill">Supabase</span><span class="stack-pill">Riverpod</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 project-item" data-cat="flutter">
+        <div class="commit-card">
+          <div class="commit-head">
+            <span class="commit-hash">#f19a44</span>
+            <span class="commit-branch">main</span>
+          </div>
+          <div class="commit-title">Portefeuille mobile money</div>
+          <p class="commit-desc">Transferts, historique et notifications sécurisées pour paiements mobiles.</p>
+          <span class="stack-pill">Flutter</span><span class="stack-pill">REST</span><span class="stack-pill">Biometrics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE (git log) ================= -->
+<section class="section" id="experience" style="background:#EFF1F8;">
+  <div class="container">
+    <div class="eyebrow">parcours</div>
+    <h2 class="section-title">Historique</h2>
+
+    <div class="gitlog mt-4">
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2024.03</span>
+        <div>
+          <div class="gitlog-role">Ingénieur Développement Mobile Senior</div>
+          <div class="gitlog-org">Entreprise Tech · Dakar, Sénégal</div>
+          <div class="gitlog-desc">Pilotage technique d'applications Swift & Kotlin, mentorat, mise en place des standards de revue de code.</div>
+        </div>
+        <span class="gitlog-date">2024 — présent</span>
+      </div>
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2022.01</span>
+        <div>
+          <div class="gitlog-role">Développeur Mobile</div>
+          <div class="gitlog-org">Studio Numérique · Dakar, Sénégal</div>
+          <div class="gitlog-desc">Développement Flutter multi-clients, intégration de paiements mobiles et d'API tierces.</div>
+        </div>
+        <span class="gitlog-date">2022 — 2024</span>
+      </div>
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2020.06</span>
+        <div>
+          <div class="gitlog-role">Développeur Junior Android</div>
+          <div class="gitlog-org">Entreprise Partenaire</div>
+          <div class="gitlog-desc">Développement de fonctionnalités Kotlin, correction de bugs, tests unitaires.</div>
+        </div>
+        <span class="gitlog-date">2020 — 2022</span>
+      </div>
+      <div class="gitlog-item">
+        <span class="gitlog-hash">#2015.09</span>
+        <div>
+          <div class="gitlog-role">Diplôme d'Ingénieur en Informatique</div>
+          <div class="gitlog-org">École / Université</div>
+          <div class="gitlog-desc">Spécialisation développement logiciel et systèmes mobiles.</div>
+        </div>
+        <span class="gitlog-date">2015 — 2020</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="eyebrow">contact</div>
+    <h2 class="section-title">Un projet en tête ?</h2>
+
+    <div class="row g-4 mt-3">
+      <div class="col-lg-5">
+        <div class="contact-info-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div><div class="mono" style="font-size:.72rem;color:var(--ink-dim);">EMAIL</div><div>ndiaye.seydou@email.com</div></div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fa-solid fa-phone"></i>
+          <div><div class="mono" style="font-size:.72rem;color:var(--ink-dim);">TÉLÉPHONE</div><div>+221 00 000 00 00</div></div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div><div class="mono" style="font-size:.72rem;color:var(--ink-dim);">LOCALISATION</div><div>Dakar, Sénégal</div></div>
+        </div>
+        <div class="d-flex gap-2 mt-4">
+          <a href="#" class="social-dot" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="social-dot" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-dot" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="contact-card">
+          <form id="contactForm" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label-custom">NOM COMPLET</label>
+                <input type="text" class="form-control form-control-custom" name="name" required placeholder="Votre nom">
+                <div class="invalid-feedback" style="color:#D9364A;">Merci d'indiquer votre nom.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">EMAIL</label>
+                <input type="email" class="form-control form-control-custom" name="email" required placeholder="vous@exemple.com">
+                <div class="invalid-feedback" style="color:#D9364A;">Merci d'indiquer un email valide.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">SUJET</label>
+                <input type="text" class="form-control form-control-custom" name="subject" required placeholder="Sujet de votre message">
+                <div class="invalid-feedback" style="color:#D9364A;">Merci d'indiquer un sujet.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">MESSAGE</label>
+                <textarea class="form-control form-control-custom" name="message" rows="4" required placeholder="Parlez-moi de votre projet..."></textarea>
+                <div class="invalid-feedback" style="color:#D9364A;">Merci d'écrire un message.</div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-coral w-100">Envoyer le message <i class="fa-solid fa-arrow-right ms-1"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+    <div>© <span id="year"></span> Ndiaye SEYDOU — Tous droits réservés.</div>
+    <div class="mono" style="font-size:.75rem;">construit avec <i class="fa-solid fa-heart" style="color:var(--coral);"></i> à Dakar</div>
+  </div>
+</footer>
+
+<div class="toast-custom" id="successToast">
+  <i class="fa-solid fa-circle-check" style="color:var(--teal);"></i>
+  <span>Message envoyé ! Je vous réponds rapidement.</span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // editor tab switching (visual only, cycles active tab styling)
+  const tabs = document.querySelectorAll('.editor-tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+  }));
+
+  // scrollspy
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('.nav-link-custom');
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link-custom[href="#${entry.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(s => spyObserver.observe(s));
+
+  document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const menu = document.getElementById('navMenu');
+      if(menu.classList.contains('show')){
+        bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      }
+    });
+  });
+
+  // animated counters
+  const counters = document.querySelectorAll('.stat-num');
+  const countObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        let cur = 0;
+        const step = Math.max(1, Math.round(target/40));
+        const timer = setInterval(() => {
+          cur += step;
+          if(cur >= target){cur = target; clearInterval(timer);}
+          el.textContent = cur;
+        }, 30);
+        obs.unobserve(el);
+      }
+    });
+  }, {threshold:0.6});
+  counters.forEach(c => countObserver.observe(c));
+
+  // project filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      projectItems.forEach(item => {
+        const show = filter === 'all' || item.dataset.cat === filter;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  // contact form
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('successToast');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if(!form.checkValidity()){
+      form.classList.add('was-validated');
+      return;
+    }
+    form.classList.add('was-validated');
+    toast.classList.add('show');
+    form.reset();
+    form.classList.remove('was-validated');
+    setTimeout(() => toast.classList.remove('show'), 3800);
+  });
+});
+</script>
+</body>
+</html>
